@@ -2,6 +2,7 @@ import os
 import csv 
 
 filepath = os.path.join("..", "Python_Challenge", "budget_data.csv")
+output_file = "Financial_Analysis.txt"
 
 with open(filepath, "r") as in_file:
     in_csv = csv.reader(in_file)
@@ -11,7 +12,6 @@ with open(filepath, "r") as in_file:
     profit = []
     months = []
     revenue_change = []
-
 
     for row in in_csv:
         profit.append(int(row[1]))
@@ -36,7 +36,23 @@ with open(filepath, "r") as in_file:
     print("Greatest Profit Increase: " + str(months[revenue_change.index(max(revenue_change))+1]) + " " + "$" + str(greatest_increase))
     print("Greatest Profit Decrease: " + str(months[revenue_change.index(min(revenue_change))+1]) + " " + "$" + str(greatest_decrease))
 
-  
+with open(output_file, "w+") as text_file:
+    text_file.write("Financial Analysis\n")
+    text_file.write("__________________________\n")
+    text_file.write("\n")
+    text_file.write("Total Months: " + str(total_months))
+    text_file.write("\n")
+    text_file.write("Total: " + "$" + str(total_profit))
+    text_file.write("\n")
+    text_file.write("Average Change: " + "$" + str(round(revenue_average, 2)))
+    text_file.write("\n")
+    text_file.write("Greatest Profit Increase: " + str(months[revenue_change.index(max(revenue_change))+1]) + " " + "$" + str(greatest_increase))
+    text_file.write("\n")
+    text_file.write("Greatest Profit Decrease: " + str(months[revenue_change.index(min(revenue_change))+1]) + " " + "$" + str(greatest_decrease))
+
+
+
+
 
 
     
