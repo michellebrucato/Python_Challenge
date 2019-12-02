@@ -21,6 +21,11 @@ with open(filepath, "r") as in_file:
     total_profit = sum(profit)
     # print(total_profit)
 
+    for e in range(1, len(profit)):
+        revenue_change.append((int(profit[e]) - int(profit[e-1])))
+    
+    revenue_average = sum(revenue_change) / len(revenue_change)
+    # print(revenue_average)
 
 
 
